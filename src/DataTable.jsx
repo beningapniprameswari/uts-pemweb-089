@@ -9,10 +9,10 @@ const DataTable = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const cacheBuster = `&_t=${Date.now()}`;
-      const response = await fetch(`https://catfact.ninja/facts?limit=5${cacheBuster}`);
+      const randomPage = Math.floor(Math.random() * 20) + 1;
+      const response = await fetch(`https://catfact.ninja/facts?limit=5&page=${randomPage}`);
 
-      if (!response.ok) throw new Error('Gagal mengambil fakta kucing');
+      if (!response.ok) throw new Error('Failed to load data');
       const data = await response.json();
       setFacts(data.data);
     } catch (err) {
@@ -28,10 +28,10 @@ const DataTable = () => {
 
   return (
     <section className="facts-section">
-      <h2>Fakta Kucing Menarik</h2>
+      <h2>Fun Facts About Cat 😸💡</h2>
 
       <button onClick={fetchFacts} disabled={isLoading} className="refresh-btn">
-        {isLoading ? 'Memuat...' : 'Dapatkan Fakta Baru'}
+        {isLoading ? 'Loading...' : 'Get New Facts'}
       </button>
 
       {error && <p className="error-text">{error}</p>}
@@ -40,14 +40,14 @@ const DataTable = () => {
         <thead>
           <tr>
             <th>No.</th>
-            <th>Fakta</th>
-            <th>Panjang (Karakter)</th>
+            <th>Facts</th>
+            <th>Characters Count</th>
           </tr>
         </thead>
         <tbody>
           {isLoading && (
             <tr>
-              <td colSpan="3" style={{ textAlign: 'center' }}>Memuat...</td>
+              <td colSpan="3" style={{ textAlign: 'center' }}>Loading...</td>
             </tr>
           )}
           {!isLoading && facts.map((factItem, index) => (
