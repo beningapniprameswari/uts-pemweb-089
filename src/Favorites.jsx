@@ -21,9 +21,9 @@ const Favorites = () => {
 
   return (
     <section className="favorites-section">
-      <h2>Favorit Anda</h2>
+      <h2>Favorite Pictures 📸</h2>
       {favoriteImages.length === 0 ? (
-        <p>Anda belum memiliki gambar favorit. Coba klik '☆ Favoritkan'!</p>
+        <p>There is no favorite pictures. Choose picture and Press "☆ Favorite?"</p>
       ) : (
         <div className="gallery-grid">
           {favoriteImages.map(url => (
