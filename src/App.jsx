@@ -35,7 +35,7 @@ const App = () => {
       }
 
       const response = await fetch(url);
-      if (!response.ok) throw new Error('Gagal mengambil data gambar.');
+      if (!response.ok) throw new Error('Failed to load data');
       const data = await response.json();
 
       let imageUrls = [];
@@ -69,10 +69,10 @@ const App = () => {
         <SearchForm onSearch={handleBreedSearch} currentType={animalType} />
 
         <section>
-          <h2>Galeri {animalType === 'dog' ? 'Anjing' : 'Kucing'}</h2>
+          <h2>Gallery {animalType === 'dog' ? 'Dog 🐶' : 'Cat 🐱'}</h2>
           
           <div className="gallery-grid">
-            {isLoading && <p className="loading-text">Memuat gambar...</p>}
+            {isLoading && <p className="loading-text">Loading...</p>}
             {error && <p className="error-text">Error: {error}</p>}
             
             {!isLoading && !error && images.map((imgUrl) => (
