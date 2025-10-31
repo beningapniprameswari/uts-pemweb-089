@@ -31,7 +31,7 @@ const SearchForm = ({ onSearch, currentType }) => {
           setBreeds(catBreeds);
         }
       } catch (error) {
-        console.error("Gagal mengambil daftar breed:", error);
+        console.error("Failed to load data", error);
       } finally {
         setIsLoading(false);
       }
@@ -45,7 +45,7 @@ const SearchForm = ({ onSearch, currentType }) => {
     onSearch(selectedBreed); 
   };
 
-  const labelText = `Pilih Breed ${currentType === 'dog' ? 'Anjing' : 'Kucing'}:`;
+  const labelText = `Select Breed ${currentType === 'dog' ? 'Dog' : 'Cat'}:`;
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ const SearchForm = ({ onSearch, currentType }) => {
         disabled={isLoading || breeds.length === 0} 
       >
         <option value="" disabled>
-          {isLoading ? 'Memuat daftar...' : '-- Pilih salah satu --'}
+          {isLoading ? 'Loading...' : '-- Choose One --'}
         </option>
         
         {breeds.map(breed => (
@@ -67,7 +67,7 @@ const SearchForm = ({ onSearch, currentType }) => {
           </option>
         ))}
       </select>
-      <button type="submit" disabled={isLoading}>Cari Gambar</button>
+      <button type="submit" disabled={isLoading}>Search Images 🔍</button>
     </form>
   );
 };
