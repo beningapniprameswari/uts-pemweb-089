@@ -4,6 +4,7 @@ import SearchForm from './SearchForm.jsx';
 import DataTable from './DataTable.jsx';
 import DetailCard from './DetailCard.jsx';
 import Favorites from './Favorites.jsx';
+import Footer from './Footer.jsx';
 
 const App = () => {
   const [animalType, setAnimalType] = useState('dog');
@@ -12,26 +13,35 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchImages(); 
+    fetchImages('', 12); 
   }, [animalType]);
 
-  const fetchImages = async (breedIdentifier = '') => {
+  const fetchImages = async (breedIdentifier = '', count = 12, imageType = 'static', hasBreeds = true) => {
     setIsLoading(true);
     setError(null);
     let url = '';
+    const limit = Math.max(1, Math.min(count, 20)); 
 
     try {
       if (animalType === 'dog') {
         const breedName = breedIdentifier;
         url = breedName
-          ? `https://dog.ceo/api/breed/${breedName}/images/random/12`
-          : 'https://dog.ceo/api/breeds/image/random/12';
+          ? `https://dog.ceo/api/breed/${breedName}/images/random/${limit}`
+          : `https://dog.ceo/api/breeds/image/random/${limit}`;
 
       } else {
         const breedId = breedIdentifier;
-        url = breedId
-          ? `https://api.thecatapi.com/v1/images/search?limit=12&breed_ids=${breedId}`
-          : 'https://api.thecatapi.com/v1/images/search?limit=12';
+        const params = new URLSearchParams({
+          limit: limit,
+          has_breeds: hasBreeds ? 1 : 0,
+          mime_types: imageType === 'static' ? 'jpg,png' : 'gif'
+        });
+
+        if (breedId) {
+          params.append('breed_ids', breedId);
+        }
+        
+        url = `https://api.thecatapi.com/v1/images/search?${params.toString()}`;
       }
 
       const response = await fetch(url);
@@ -57,8 +67,8 @@ const App = () => {
     setAnimalType(type);
   };
 
-  const handleBreedSearch = (breed) => {
-    fetchImages(breed);
+  const handleBreedSearch = (params) => {
+    fetchImages(params.breed, params.count, params.type, params.hasBreeds);
   };
 
   return (
@@ -85,6 +95,8 @@ const App = () => {
         
         <Favorites />
       </main>
+
+      <Footer />
     </div>
   );
 };
