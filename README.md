@@ -1,16 +1,45 @@
-# React + Vite
+# Dogs and Cats Gallery 🐶🐱
+**Nama:** Bening Apni Prameswari  
+**NIM:** 123140089  
+**Kelas:** Pemrograman Aplikasi dan Web RA
+**Dosen Pengampu:** Muhammad Habib Algifari, S.Kom., M.TI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🧠 Deskripsi Singkat
+Aplikasi galeri hewan interaktif yang menampilkan gambar acak dan fakta menarik untuk **Anjing (Dogs)** dan **Kucing (Cats)**.  
+Menggunakan **Dog CEO API** dan **Cat Facts API** yang benar-benar gratis tanpa API key.  
+Dibangun dengan **React + Vite**, dengan memanfaatkan **state management**, **localStorage**, dan **responsive CSS Grid**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# 🧠 Teknologi yang Digunakan
+- React (Functional Components, Hooks)
+- JavaScript (ES6+)
+- HTML5 + CSS3
+- Vite (Dev Server)
+- Dog CEO API dan Cat Facts API
+- localStorage untuk penyimpanan favorite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Link Deployment
+> **Vercel:** [https://uts-pemweb-089.vercel.app/](#)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Instalasi dan Menjalankan Aplikasi
+```bash
+# Clone repository
+git clone https://github.com/beningapniprameswari/uts-pemweb-089.git
+cd uts-pemweb-089
+
+# Install dependencies
+npm install
+
+# Jalankan aplikasi di mode development
+npm run dev
+
+# Build untuk produksi
+npm run build
+
