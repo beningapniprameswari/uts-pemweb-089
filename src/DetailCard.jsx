@@ -26,12 +26,12 @@ const DetailCard = ({ imageUrl }) => {
 
   return (
     <div className="gallery-card">
-      <img src={imageUrl} alt="Gambar Hewan" loading="lazy" />
+      <img src={imageUrl} alt="Animal Picture" loading="lazy" />
       <button
         className={`favorite-btn ${isFavorited ? 'favorited' : ''}`}
         onClick={handleFavorite}
       >
-        {isFavorited ? '★ Favorit' : '☆ Favoritkan'}
+        {isFavorited ? '★ Favorite!' : '☆ Favorite?'}
       </button>
     </div>
   );
